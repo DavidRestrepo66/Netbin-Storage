@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Netbin Storage — Panel principal de gestión de activos del laboratorio de Redes y Telecomunicaciones."/>
+  <title>Netbin Storage — Inicio</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+  <!-- AuthGuard se carga primero: detiene si no hay sesión -->
+  <script src="js/authGuard.js"></script>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ════════════════ SIDEBAR ════════════════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo-box">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="8" fill="#3d3d3d"/>
+          <rect x="8"  y="8"  width="20" height="20" rx="2" fill="white"/>
+          <rect x="36" y="8"  width="20" height="20" rx="2" fill="white"/>
+          <rect x="8"  y="36" width="20" height="20" rx="2" fill="white"/>
+          <rect x="36" y="36" width="20" height="20" rx="2" fill="#f39200"/>
+          <rect x="14" y="14" width="8"  height="8"  rx="1" fill="#3d3d3d"/>
+          <rect x="42" y="14" width="8"  height="8"  rx="1" fill="#3d3d3d"/>
+          <rect x="14" y="42" width="8"  height="8"  rx="1" fill="#3d3d3d"/>
+        </svg>
+      </div>
+      <div class="sidebar-brand-name">NETBIN</div>
+      <div class="sidebar-brand-sub">S T O R A G E</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-item active" data-section="inicio" id="nav-inicio">
+        <i class="bx bx-home nav-icon"></i>
+        <span>Inicio</span>
+      </div>
+      <div class="nav-item" data-section="activos" id="nav-activos">
+        <i class="bx bx-server nav-icon"></i>
+        <span>Activos</span>
+      </div>
+      <div class="nav-item" data-section="reportes" id="nav-reportes">
+        <i class="bx bx-bar-chart-alt-2 nav-icon"></i>
+        <span>Reportes</span>
+      </div>
+      <div class="nav-item" data-section="usuarios" id="nav-usuarios">
+        <i class="bx bx-group nav-icon"></i>
+        <span>Usuarios</span>
+      </div>
+      <div class="nav-item" data-section="roles" id="nav-roles">
+        <i class="bx bx-shield-quarter nav-icon"></i>
+        <span>Roles</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn-logout" id="btn-logout" onclick="NB_SESSION.logout()">
+        <i class="bx bx-log-out"></i>
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <!-- ════════════════ TOP BAR ════════════════ -->
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="title-icon">🏠</span>
+      <span id="topbar-section-name">Inicio</span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-time">
+        <i class="bx bx-time-five"></i>
+        <span id="topbar-clock">—</span>
+      </div>
+      <div class="topbar-user">
+        <div class="topbar-avatar" id="topbar-avatar">?</div>
+        <div class="topbar-user-info">
+          <div class="topbar-name" id="topbar-name">Cargando...</div>
+          <div class="topbar-role">
+            <span class="role-badge" id="topbar-role">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════ MAIN CONTENT ════════════════ -->
+  <main class="main-content" id="main-content">
+
+    <!-- ── Sección: INICIO (Dashboard) ─────────── -->
+    <section id="section-inicio">
+      <div class="page-header">
+        <h1>Panel Principal</h1>
+        <p>Bienvenido al sistema de inventario del Laboratorio de Redes y Telecomunicaciones.</p>
+      </div>
+
+      <!-- Estadísticas -->
+      <div class="stats-strip">
+        <div class="stat-box">
+          <span class="stat-label">Total Activos</span>
+          <span class="stat-value">42</span>
+          <span class="stat-indicator up"><i class="bx bx-trending-up"></i> +3 este mes</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Activos Activos</span>
+          <span class="stat-value">35</span>
+          <span class="stat-indicator up"><i class="bx bx-check-circle"></i> Operativos</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">En Advertencia</span>
+          <span class="stat-value">5</span>
+          <span class="stat-indicator warn"><i class="bx bx-error"></i> Revisar</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Fuera de Servicio</span>
+          <span class="stat-value">2</span>
+          <span class="stat-indicator down"><i class="bx bx-x-circle"></i> Requiere atención</span>
+        </div>
+      </div>
+
+      <!-- Opciones principales (Cards) -->
+      <h2 class="section-title"><i class="bx bx-grid-alt"></i> Opciones de Trabajo</h2>
+      <div class="dashboard-cards">
+
+        <div class="dash-card" onclick="navigateTo('usuarios')">
+          <div class="card-icon-wrap">👥</div>
+          <div class="card-body">
+            <h3>Gestión de Usuarios</h3>
+            <p>Administre los usuarios del sistema, asigne roles y controle el acceso al laboratorio.</p>
+          </div>
+          <div class="card-arrow">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
+        </div>
+
+        <div class="dash-card accent" onclick="navigateTo('activos')">
+          <div class="card-icon-wrap">🖥️</div>
+          <div class="card-body">
+            <h3>Revisión de Activos</h3>
+            <p>Consulte y actualice el inventario de hardware, software y herramientas del laboratorio.</p>
+          </div>
+          <div class="card-arrow" style="color:var(--color-accent)">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
+        </div>
+
+        <div class="dash-card" onclick="navigateTo('reportes')">
+          <div class="card-icon-wrap">📊</div>
+          <div class="card-body">
+            <h3>Reportes</h3>
+            <p>Genere y exporte informes del estado de los activos, movimientos y estadísticas del laboratorio.</p>
+          </div>
+          <div class="card-arrow">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
+        </div>
+
+        <div class="dash-card" onclick="navigateTo('roles')">
+          <div class="card-icon-wrap">🛡️</div>
+          <div class="card-body">
+            <h3>Gestión de Roles</h3>
+            <p>Configure los permisos y niveles de acceso para los distintos perfiles del sistema.</p>
+          </div>
+          <div class="card-arrow">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
+        </div>
+
+      </div>
+
+      <!-- Tabla de activos recientes -->
+      <h2 class="section-title"><i class="bx bx-history"></i> Activos Recientes</h2>
+      <div class="table-card">
+        <div class="table-responsive">
+          <table id="assets-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Estado</th>
+                <th>Ubicación</th>
+                <th>Responsable</th>
+                <th>Última Mod.</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="assets-tbody">
+              <!-- Filas generadas por dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Sección: ACTIVOS ──────────────────── -->
+    <section id="section-activos" class="hidden">
+      <div class="page-header">
+        <h1><i class="bx bx-server"></i> Revisión de Activos</h1>
+        <p>Gestione el inventario completo de activos del laboratorio.</p>
+      </div>
+      <div class="table-card" style="padding:2rem; text-align:center; color:var(--color-gray);">
+        <i class="bx bx-loader-circle" style="font-size:2rem;"></i>
+        <p style="margin-top:.5rem;">Módulo en desarrollo — Primera entrega.</p>
+      </div>
+    </section>
+
+    <!-- ── Sección: REPORTES ─────────────────── -->
+    <section id="section-reportes" class="hidden">
+      <div class="page-header">
+        <h1><i class="bx bx-bar-chart-alt-2"></i> Reportes</h1>
+        <p>Genere informes y exporte datos del laboratorio.</p>
+      </div>
+      <div class="table-card" style="padding:2rem; text-align:center; color:var(--color-gray);">
+        <i class="bx bx-loader-circle" style="font-size:2rem;"></i>
+        <p style="margin-top:.5rem;">Módulo en desarrollo — Primera entrega.</p>
+      </div>
+    </section>
+
+    <!-- ── Sección: USUARIOS ─────────────────── -->
+    <section id="section-usuarios" class="hidden">
+      <div class="page-header">
+        <h1><i class="bx bx-group"></i> Gestión de Usuarios</h1>
+        <p>Administre los usuarios y sus permisos en el sistema.</p>
+      </div>
+      <div class="table-card" style="padding:2rem; text-align:center; color:var(--color-gray);">
+        <i class="bx bx-loader-circle" style="font-size:2rem;"></i>
+        <p style="margin-top:.5rem;">Módulo en desarrollo — Primera entrega.</p>
+      </div>
+    </section>
+
+    <!-- ── Sección: ROLES ────────────────────── -->
+    <section id="section-roles" class="hidden">
+      <div class="page-header">
+        <h1><i class="bx bx-shield-quarter"></i> Gestión de Roles</h1>
+        <p>Configure los niveles de acceso y permisos del sistema.</p>
+      </div>
+      <div class="table-card" style="padding:2rem; text-align:center; color:var(--color-gray);">
+        <i class="bx bx-loader-circle" style="font-size:2rem;"></i>
+        <p style="margin-top:.5rem;">Módulo en desarrollo — Primera entrega.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

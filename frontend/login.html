@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Netbin Storage - Inicie sesión para acceder al sistema de inventario del laboratorio de Redes y Telecomunicaciones."/>
+  <title>Netbin Storage — Iniciar Sesión</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <!-- Icons (Boxicons CDN) -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+</head>
+<body class="login-page">
+
+  <div class="login-card">
+    <!-- Logo -->
+    <div class="login-logo">
+      <svg class="logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" rx="8" fill="#3d3d3d"/>
+        <rect x="8"  y="8"  width="20" height="20" rx="2" fill="white"/>
+        <rect x="36" y="8"  width="20" height="20" rx="2" fill="white"/>
+        <rect x="8"  y="36" width="20" height="20" rx="2" fill="white"/>
+        <rect x="36" y="36" width="20" height="20" rx="2" fill="#f39200"/>
+        <rect x="14" y="14" width="8"  height="8"  rx="1" fill="#3d3d3d"/>
+        <rect x="42" y="14" width="8"  height="8"  rx="1" fill="#3d3d3d"/>
+        <rect x="14" y="42" width="8"  height="8"  rx="1" fill="#3d3d3d"/>
+      </svg>
+      <div class="logo-brand">
+        <span class="brand-name">NETBIN</span>
+      </div>
+      <span class="brand-sub">S T O R A G E</span>
+    </div>
+
+    <!-- Mensaje de error -->
+    <div id="error-msg" class="msg-error hidden" role="alert">
+      <i class="bx bx-error-circle"></i>
+      <span id="error-text">Credenciales inválidas.</span>
+    </div>
+
+    <!-- Formulario -->
+    <form id="login-form" class="login-form" novalidate>
+      <div class="input-group">
+        <i class="bx bx-user input-icon"></i>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Ingrese su usuario"
+          autocomplete="username"
+          required
+        />
+      </div>
+
+      <div class="input-group">
+        <i class="bx bx-lock-alt input-icon"></i>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Ingrese su contraseña"
+          autocomplete="current-password"
+          required
+        />
+      </div>
+
+      <button type="submit" id="btn-login" class="btn-login">
+        <span id="btn-text">Iniciar sesión</span>
+        <i id="btn-icon" class="bx bx-log-in" style="margin-left:.5rem;"></i>
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

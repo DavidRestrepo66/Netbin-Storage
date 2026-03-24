@@ -1,0 +1,18 @@
+[
+  {
+    "id": "usr-001",
+    "username": "admin",
+    "password": "admin123",
+    "nombre": "Carlos Ramírez",
+    "rol": "Administrador",
+    "email": "admin@netbin.edu.co"
+  },
+  {
+    "id": "usr-002",
+    "username": "monitor",
+    "password": "monitor123",
+    "nombre": "Laura Torres",
+    "rol": "Monitor",
+    "email": "monitor@netbin.edu.co"
+  }
+]
