@@ -35,11 +35,7 @@
     </div>
 
     <nav class="sidebar-nav">
-      <div class="nav-item active" data-section="inicio" id="nav-inicio">
-        <i class="bx bx-home nav-icon"></i>
-        <span>Inicio</span>
-      </div>
-      <div class="nav-item" data-section="activos" id="nav-activos">
+      <div class="nav-item active" data-section="activos" id="nav-activos">
         <i class="bx bx-server nav-icon"></i>
         <span>Activos</span>
       </div>
@@ -58,19 +54,16 @@
     </nav>
 
     <div class="sidebar-footer">
-      <button class="btn-logout" id="btn-logout" onclick="NB_SESSION.logout()">
-        <i class="bx bx-log-out"></i>
-        Cerrar sesión
-      </button>
+      <img
+        class="sidebar-company-logo"
+        src="/assets/netbin-logo.png"
+        alt="NETBIN STORAGE"
+      />
     </div>
   </aside>
 
   <!-- ════════════════ TOP BAR ════════════════ -->
   <header class="topbar">
-    <div class="topbar-title">
-      <span class="title-icon">🏠</span>
-      <span id="topbar-section-name">Inicio</span>
-    </div>
     <div class="topbar-right">
       <div class="topbar-time">
         <i class="bx bx-time-five"></i>
@@ -92,80 +85,18 @@
   <main class="main-content" id="main-content">
 
     <!-- ── Sección: INICIO (Dashboard) ─────────── -->
-    <section id="section-inicio">
+    <section id="section-inicio" class="hidden">
       <div class="page-header">
-        <h1>Panel Principal</h1>
-        <p>Bienvenido al sistema de inventario del Laboratorio de Redes y Telecomunicaciones.</p>
+        <h1>Inicio</h1>
+      </div>
+    </section>
+
+    <!-- ── Sección: ACTIVOS ──────────────────── -->
+    <section id="section-activos">
+      <div class="page-header">
+        <h1>Inicio</h1>
       </div>
 
-      <!-- Estadísticas -->
-      <div class="stats-strip">
-        <div class="stat-box">
-          <span class="stat-label">Total Activos</span>
-          <span class="stat-value">42</span>
-          <span class="stat-indicator up"><i class="bx bx-trending-up"></i> +3 este mes</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">Activos Activos</span>
-          <span class="stat-value">35</span>
-          <span class="stat-indicator up"><i class="bx bx-check-circle"></i> Operativos</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">En Advertencia</span>
-          <span class="stat-value">5</span>
-          <span class="stat-indicator warn"><i class="bx bx-error"></i> Revisar</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-label">Fuera de Servicio</span>
-          <span class="stat-value">2</span>
-          <span class="stat-indicator down"><i class="bx bx-x-circle"></i> Requiere atención</span>
-        </div>
-      </div>
-
-      <!-- Opciones principales (Cards) -->
-      <h2 class="section-title"><i class="bx bx-grid-alt"></i> Opciones de Trabajo</h2>
-      <div class="dashboard-cards">
-
-        <div class="dash-card" onclick="navigateTo('usuarios')">
-          <div class="card-icon-wrap">👥</div>
-          <div class="card-body">
-            <h3>Gestión de Usuarios</h3>
-            <p>Administre los usuarios del sistema, asigne roles y controle el acceso al laboratorio.</p>
-          </div>
-          <div class="card-arrow">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
-        </div>
-
-        <div class="dash-card accent" onclick="navigateTo('activos')">
-          <div class="card-icon-wrap">🖥️</div>
-          <div class="card-body">
-            <h3>Revisión de Activos</h3>
-            <p>Consulte y actualice el inventario de hardware, software y herramientas del laboratorio.</p>
-          </div>
-          <div class="card-arrow" style="color:var(--color-accent)">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
-        </div>
-
-        <div class="dash-card" onclick="navigateTo('reportes')">
-          <div class="card-icon-wrap">📊</div>
-          <div class="card-body">
-            <h3>Reportes</h3>
-            <p>Genere y exporte informes del estado de los activos, movimientos y estadísticas del laboratorio.</p>
-          </div>
-          <div class="card-arrow">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
-        </div>
-
-        <div class="dash-card" onclick="navigateTo('roles')">
-          <div class="card-icon-wrap">🛡️</div>
-          <div class="card-body">
-            <h3>Gestión de Roles</h3>
-            <p>Configure los permisos y niveles de acceso para los distintos perfiles del sistema.</p>
-          </div>
-          <div class="card-arrow">Ir al módulo <i class="bx bx-right-arrow-alt"></i></div>
-        </div>
-
-      </div>
-
-      <!-- Tabla de activos recientes -->
-      <h2 class="section-title"><i class="bx bx-history"></i> Activos Recientes</h2>
       <div class="table-card">
         <div class="table-responsive">
           <table id="assets-table">
@@ -175,7 +106,6 @@
                 <th>Nombre</th>
                 <th>Categoría</th>
                 <th>Estado</th>
-                <th>Ubicación</th>
                 <th>Responsable</th>
                 <th>Última Mod.</th>
                 <th>Acción</th>
@@ -186,18 +116,6 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
-
-    <!-- ── Sección: ACTIVOS ──────────────────── -->
-    <section id="section-activos" class="hidden">
-      <div class="page-header">
-        <h1><i class="bx bx-server"></i> Revisión de Activos</h1>
-        <p>Gestione el inventario completo de activos del laboratorio.</p>
-      </div>
-      <div class="table-card" style="padding:2rem; text-align:center; color:var(--color-gray);">
-        <i class="bx bx-loader-circle" style="font-size:2rem;"></i>
-        <p style="margin-top:.5rem;">Módulo en desarrollo — Primera entrega.</p>
       </div>
     </section>
 

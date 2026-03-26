@@ -170,9 +170,6 @@ function renderAssetsTable() {
           ${asset.estado}
         </span>
       </td>
-      <td style="max-width:200px; font-size:.8rem; color:var(--color-gray)">
-        ${asset.ubicacion}
-      </td>
       <td>${asset.responsable}</td>
       <td style="font-size:.8rem; white-space:nowrap">${asset.ultimaMod}</td>
       <td>
