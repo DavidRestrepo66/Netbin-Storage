@@ -7,6 +7,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
@@ -18,6 +19,16 @@ app.use(express.json());
 
 // Sirve los archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, 'frontend')));
+
+// Sirve recursos gráficos externos (p.ej. logo) que el evaluador adjuntó
+// en el workspace de Cursor. Esto evita tener que copiar binarios al repo.
+const externalAssetsPath = path.resolve(
+  __dirname,
+  '../../../.cursor/projects/c-Users-david-Desktop-Nueva-carpeta-Netbin-Storage/assets'
+);
+if (fs.existsSync(externalAssetsPath)) {
+  app.use('/assets', express.static(externalAssetsPath));
+}
 
 // ── Rutas API ─────────────────────────────────────────────────────────────────
 app.use('/api/auth', authRoutes);
