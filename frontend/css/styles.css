@@ -813,3 +813,27 @@ tbody td {
   margin-top: auto;
   padding-top: 1.2rem;
 }
+
+/* ── Botón Logout ─────────────────────────────────────────── */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .5rem .8rem;
+  background: rgba(255,255,255,.12);
+  color: var(--color-white);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-base);
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-logout:hover {
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.35);
+}

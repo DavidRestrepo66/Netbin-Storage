@@ -34,7 +34,13 @@
   setInterval(update, 10_000);
 })();
 
-/* ── 3. Navegación entre secciones ───────────────────────── */
+/* ── 3. Asignar evento al botón logout ───────────────────────────────── */
+// Usa la función logout() que viene de authGuard.js (window.NB_SESSION.logout)
+document.getElementById('btn-logout')?.addEventListener('click', () => {
+  window.NB_SESSION.logout();
+});
+
+/* ── 4. Navegación entre secciones ───────────────────────── */
 const SECTIONS = ['inicio', 'activos', 'reportes', 'usuarios', 'roles'];
 
 const SECTION_ICONS = {
@@ -80,7 +86,7 @@ SECTIONS.forEach((id) => {
   document.getElementById(`nav-${id}`)?.addEventListener('click', () => navigateTo(id));
 });
 
-/* ── 4. Datos de ejemplo para la tabla de activos ─────────── */
+/* ── 5. Datos de ejemplo para la tabla de activos ─────────── */
 const SAMPLE_ASSETS = [
   {
     codigo: 'RT-0012',
@@ -153,6 +159,74 @@ const estadoClass = (estado) => {
   return map[estado] || 'status-activo';
 };
 
+/* ── 6. Funciones para estadísticas del dashboard ─────────── */
+
+/**
+ * Calcula las estadísticas de los activos.
+ * @returns {object} Objeto con estadísticas
+ */
+function calculateStats() {
+  const total = SAMPLE_ASSETS.length;
+  const activos = SAMPLE_ASSETS.filter(a => a.estado === 'Activo').length;
+  const advertencias = SAMPLE_ASSETS.filter(a => a.estado === 'Advertencia').length;
+  const fuera = SAMPLE_ASSETS.filter(a => a.estado === 'Fuera de Servicio').length;
+  
+  return {
+    total,
+    activos,
+    advertencias,
+    fuera,
+    activosPct: total > 0 ? Math.round((activos / total) * 100) : 0,
+    advertenciasPct: total > 0 ? Math.round((advertencias / total) * 100) : 0,
+    fueraPct: total > 0 ? Math.round((fuera / total) * 100) : 0
+  };
+}
+
+/**
+ * Renderiza las estadísticas en la sección de inicio.
+ */
+function renderDashboardStats() {
+  const stats = calculateStats();
+  
+  // Actualizar valores de estadísticas
+  document.getElementById('stat-total').textContent = stats.total;
+  document.getElementById('stat-total-pct').textContent = '100%';
+  
+  document.getElementById('stat-activos').textContent = stats.activos;
+  document.getElementById('stat-activos-pct').textContent = stats.activosPct + '%';
+  
+  document.getElementById('stat-advertencias').textContent = stats.advertencias;
+  document.getElementById('stat-adv-pct').textContent = stats.advertenciasPct + '%';
+  
+  document.getElementById('stat-fuera').textContent = stats.fuera;
+  document.getElementById('stat-fuera-pct').textContent = stats.fueraPct + '%';
+}
+
+/**
+ * Renderiza la tabla de últimos activos registrados en la sección de inicio.
+ */
+function renderRecentAssets() {
+  const tbody = document.getElementById('recent-assets-tbody');
+  if (!tbody) return;
+
+  // Mostrar solo los últimos 5 activos en orden inverso (más recientes primero)
+  const recentAssets = SAMPLE_ASSETS.slice().reverse().slice(0, 5);
+
+  tbody.innerHTML = recentAssets.map((asset) => `
+    <tr>
+      <td><strong>${asset.codigo}</strong></td>
+      <td>${asset.nombre}</td>
+      <td>${asset.categoria}</td>
+      <td>
+        <span class="status-badge ${estadoClass(asset.estado)}">
+          ${asset.estado}
+        </span>
+      </td>
+      <td>${asset.responsable}</td>
+    </tr>
+  `).join('');
+}
+
 /**
  * Renderiza la tabla de activos con los datos de muestra.
  */
@@ -181,5 +255,7 @@ function renderAssetsTable() {
   `).join('');
 }
 
-// Inicializar tabla al cargar
+// Inicializar todas las tablas y estadísticas al cargar
+renderDashboardStats();
+renderRecentAssets();
 renderAssetsTable();

@@ -35,7 +35,11 @@
     </div>
 
     <nav class="sidebar-nav">
-      <div class="nav-item active" data-section="activos" id="nav-activos">
+      <div class="nav-item active" data-section="inicio" id="nav-inicio">
+        <i class="bx bx-home nav-icon"></i>
+        <span>Inicio</span>
+      </div>
+      <div class="nav-item" data-section="activos" id="nav-activos">
         <i class="bx bx-server nav-icon"></i>
         <span>Activos</span>
       </div>
@@ -53,13 +57,7 @@
       </div>
     </nav>
 
-    <div class="sidebar-footer">
-      <img
-        class="sidebar-company-logo"
-        src="/assets/netbin-logo.png"
-        alt="NETBIN STORAGE"
-      />
-    </div>
+    <div class="sidebar-footer"></div>
   </aside>
 
   <!-- ════════════════ TOP BAR ════════════════ -->
@@ -78,6 +76,10 @@
           </div>
         </div>
       </div>
+      <button class="btn-logout" id="btn-logout" title="Cerrar sesión">
+        <i class="bx bx-log-out"></i>
+        <span>Salir</span>
+      </button>
     </div>
   </header>
 
@@ -85,14 +87,141 @@
   <main class="main-content" id="main-content">
 
     <!-- ── Sección: INICIO (Dashboard) ─────────── -->
-    <section id="section-inicio" class="hidden">
+    <section id="section-inicio">
       <div class="page-header">
-        <h1>Inicio</h1>
+        <h1><i class="bx bx-home"></i> Inicio</h1>
+        <p>Resumen general del laboratorio de Redes y Telecomunicaciones</p>
+      </div>
+
+      <!-- Estadísticas principales -->
+      <div class="stats-strip">
+        <div class="stat-box">
+          <div class="stat-label">Total de Activos</div>
+          <div class="stat-value" id="stat-total">0</div>
+          <div class="stat-indicator up">
+            <i class="bx bx-up-arrow-alt"></i>
+            <span id="stat-total-pct">0%</span>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-label">Activos Disponibles</div>
+          <div class="stat-value" id="stat-activos">0</div>
+          <div class="stat-indicator up">
+            <i class="bx bx-check-circle"></i>
+            <span id="stat-activos-pct">0%</span>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-label">Con Advertencias</div>
+          <div class="stat-value" id="stat-advertencias">0</div>
+          <div class="stat-indicator warn">
+            <i class="bx bx-alert"></i>
+            <span id="stat-adv-pct">0%</span>
+          </div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-label">Fuera de Servicio</div>
+          <div class="stat-value" id="stat-fuera">0</div>
+          <div class="stat-indicator down">
+            <i class="bx bx-x-circle"></i>
+            <span id="stat-fuera-pct">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjetas de acceso rápido -->
+      <div style="margin-top: 2.5rem;">
+        <h2 class="section-title">
+          <i class="bx bx-zap"></i> Acceso Rápido
+        </h2>
+
+        <div class="dashboard-cards">
+          <div class="dash-card" data-section="activos" onclick="navigateTo('activos')" style="cursor: pointer;">
+            <div class="card-icon-wrap">
+              <i class="bx bx-server"></i>
+            </div>
+            <div class="card-body">
+              <h3>Gestionar Activos</h3>
+              <p>Ver, editar y administrar todos los activos registrados</p>
+            </div>
+            <div class="card-arrow">
+              Ver listado <i class="bx bx-chevron-right"></i>
+            </div>
+          </div>
+
+          <div class="dash-card accent" data-section="reportes" onclick="navigateTo('reportes')" style="cursor: pointer;">
+            <div class="card-icon-wrap">
+              <i class="bx bx-bar-chart-alt-2"></i>
+            </div>
+            <div class="card-body">
+              <h3>Reportes</h3>
+              <p>Genere informes y exporte datos del laboratorio</p>
+            </div>
+            <div class="card-arrow">
+              Acceder <i class="bx bx-chevron-right"></i>
+            </div>
+          </div>
+
+          <div class="dash-card" data-section="usuarios" onclick="navigateTo('usuarios')" style="cursor: pointer;">
+            <div class="card-icon-wrap">
+              <i class="bx bx-group"></i>
+            </div>
+            <div class="card-body">
+              <h3>Usuarios</h3>
+              <p>Administre los usuarios y sus permisos</p>
+            </div>
+            <div class="card-arrow">
+              Ver usuarios <i class="bx bx-chevron-right"></i>
+            </div>
+          </div>
+
+          <div class="dash-card accent" data-section="roles" onclick="navigateTo('roles')" style="cursor: pointer;">
+            <div class="card-icon-wrap">
+              <i class="bx bx-shield-quarter"></i>
+            </div>
+            <div class="card-body">
+              <h3>Roles</h3>
+              <p>Configure los niveles de acceso del sistema</p>
+            </div>
+            <div class="card-arrow">
+              Configurar <i class="bx bx-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Últimos activos registrados -->
+      <div style="margin-top: 3rem;">
+        <h2 class="section-title">
+          <i class="bx bx-history"></i> Últimos Activos Registrados
+        </h2>
+
+        <div class="table-card">
+          <div class="table-responsive">
+            <table id="recent-assets-table">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nombre</th>
+                  <th>Categoría</th>
+                  <th>Estado</th>
+                  <th>Responsable</th>
+                </tr>
+              </thead>
+              <tbody id="recent-assets-tbody">
+                <!-- Filas generadas por dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ── Sección: ACTIVOS ──────────────────── -->
-    <section id="section-activos">
+    <section id="section-activos" class="hidden">
       <div class="page-header">
         <h1>Inicio</h1>
       </div>
