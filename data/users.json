@@ -4,15 +4,23 @@
     "username": "admin",
     "password": "admin123",
     "nombre": "Carlos Ramírez",
+    "email": "admin@netbin.edu.co",
     "rol": "Administrador",
-    "email": "admin@netbin.edu.co"
+    "rol_id": "rol-001",
+    "activo": true,
+    "fechaRegistro": "2024-01-01T00:00:00.000Z",
+    "fechaBaja": null
   },
   {
     "id": "usr-002",
     "username": "monitor",
     "password": "monitor123",
     "nombre": "Laura Torres",
+    "email": "monitor@netbin.edu.co",
     "rol": "Monitor",
-    "email": "monitor@netbin.edu.co"
+    "rol_id": "rol-002",
+    "activo": true,
+    "fechaRegistro": "2024-01-15T00:00:00.000Z",
+    "fechaBaja": null
   }
 ]

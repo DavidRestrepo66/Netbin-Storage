@@ -20,7 +20,7 @@ const findAll = () => {
 
 /**
  * Busca un usuario por username y contraseña.
- * La contraseña se compara directamente (en producción usaría bcrypt).
+ * Solo permite el acceso a usuarios activos.
  * @param {string} username
  * @param {string} password
  * @returns {Object|null} Usuario encontrado o null
@@ -28,8 +28,16 @@ const findAll = () => {
 const findByCredentials = (username, password) => {
   const users = findAll();
   return users.find(
-    (u) => u.username === username && u.password === password
+    (u) => u.username === username && u.password === password && u.activo !== false
   ) || null;
 };
 
-module.exports = { findAll, findByCredentials };
+/**
+ * Persiste la lista completa de usuarios en el archivo JSON.
+ * @param {Array} users
+ */
+const save = (users) => {
+  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), 'utf-8');
+};
+
+module.exports = { findAll, findByCredentials, save };

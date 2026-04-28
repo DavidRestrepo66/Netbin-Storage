@@ -1,0 +1,24 @@
+[
+  {
+    "id": "rol-001",
+    "nombre": "Administrador",
+    "descripcion": "Acceso completo al sistema — creación, edición y administración de todos los módulos",
+    "permisos": {
+      "acceso_activos": true,
+      "acceso_reportes": true,
+      "acceso_usuarios": true,
+      "acceso_roles": true
+    }
+  },
+  {
+    "id": "rol-002",
+    "nombre": "Monitor",
+    "descripcion": "Consulta y revisión de activos del laboratorio, sin acceso a módulos administrativos",
+    "permisos": {
+      "acceso_activos": true,
+      "acceso_reportes": false,
+      "acceso_usuarios": false,
+      "acceso_roles": false
+    }
+  }
+]

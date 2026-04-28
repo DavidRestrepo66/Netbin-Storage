@@ -1144,3 +1144,103 @@ tbody td {
   margin-top: .1rem;
   line-height: 1.4;
 }
+
+/* ============================================================
+   ROLES MODULE
+   ============================================================ */
+
+/* Badges de permisos en la tabla */
+.perm-group { display: flex; gap: .35rem; flex-wrap: wrap; }
+
+.perm-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.perm-on  { background: #e6f6ec; color: #1e7e34; }
+.perm-off { background: #f0f0f0; color: #aaa; text-decoration: line-through; }
+
+/* Grid de checkboxes en el modal */
+.permisos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .65rem;
+  margin-top: .3rem;
+}
+
+.perm-check {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .65rem .9rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: .875rem;
+  color: var(--color-gray-dk);
+  user-select: none;
+}
+.perm-check:hover { border-color: var(--color-primary); background: var(--color-primary-lt); }
+.perm-check input[type="checkbox"] { accent-color: var(--color-primary); width: 16px; height: 16px; flex-shrink: 0; }
+.perm-check span { display: flex; align-items: center; gap: .35rem; }
+.perm-check span i { font-size: 1rem; color: var(--color-primary); }
+
+/* ============================================================
+   USUARIOS MODULE
+   ============================================================ */
+
+/* Celda de usuario con avatar */
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.user-avatar-sm {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .8rem;
+  flex-shrink: 0;
+  letter-spacing: .5px;
+}
+
+.user-nombre {
+  font-weight: 600;
+  font-size: .875rem;
+  color: var(--color-gray-dk);
+}
+
+.user-username {
+  font-size: .75rem;
+  color: var(--color-gray);
+  margin-top: .05rem;
+}
+
+/* Badge de rol en la tabla */
+.rol-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .22rem .7rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-lt);
+  color: var(--color-primary-dk);
+  font-size: .75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .permisos-grid { grid-template-columns: 1fr; }
+}
