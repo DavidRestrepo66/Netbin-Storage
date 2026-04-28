@@ -223,7 +223,39 @@
     <!-- ── Sección: ACTIVOS ──────────────────── -->
     <section id="section-activos" class="hidden">
       <div class="page-header">
-        <h1>Inicio</h1>
+        <div class="page-header-row">
+          <div>
+            <h1><i class="bx bx-server"></i> Revisión de Activos</h1>
+            <p>Gestione todos los activos del laboratorio de Redes y Telecomunicaciones</p>
+          </div>
+          <button id="btn-add-asset" class="btn-primary">
+            <i class="bx bx-plus"></i> Nuevo Activo
+          </button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-btns">
+          <button class="filter-btn active" data-filter="todos">
+            Todos <span class="count-badge" id="count-todos">0</span>
+          </button>
+          <button class="filter-btn" data-filter="Hardware">
+            Hardware <span class="count-badge" id="count-hardware">0</span>
+          </button>
+          <button class="filter-btn" data-filter="Software">
+            Software <span class="count-badge" id="count-software">0</span>
+          </button>
+          <button class="filter-btn" data-filter="Consumible">
+            Consumibles <span class="count-badge" id="count-consumible">0</span>
+          </button>
+          <button class="filter-btn" data-filter="Herramienta">
+            Herramientas <span class="count-badge" id="count-herramienta">0</span>
+          </button>
+        </div>
+        <div class="search-wrap">
+          <i class="bx bx-search"></i>
+          <input type="text" id="asset-search" placeholder="Buscar activo...">
+        </div>
       </div>
 
       <div class="table-card">
@@ -236,12 +268,12 @@
                 <th>Categoría</th>
                 <th>Estado</th>
                 <th>Responsable</th>
-                <th>Última Mod.</th>
-                <th>Acción</th>
+                <th>Registro</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody id="assets-tbody">
-              <!-- Filas generadas por dashboard.js -->
+              <!-- Filas generadas por assets.js -->
             </tbody>
           </table>
         </div>
@@ -288,5 +320,91 @@
 </div>
 
 <script src="js/dashboard.js"></script>
+<script src="js/assets.js"></script>
 </body>
+
+<!-- ════════════════ MODAL: ACTIVO ════════════════ -->
+<div id="asset-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h2 id="modal-title">Nuevo Activo</h2>
+      <button class="modal-close" id="modal-close" aria-label="Cerrar"><i class="bx bx-x"></i></button>
+    </div>
+
+    <form id="asset-form" class="modal-body" novalidate>
+      <div class="form-grid">
+
+        <div class="form-group form-group--full">
+          <label for="field-nombre">Nombre *</label>
+          <input type="text" id="field-nombre" required placeholder="Nombre del activo">
+        </div>
+
+        <div class="form-group">
+          <label for="field-categoria">Categoría *</label>
+          <select id="field-categoria" required>
+            <option value="Hardware">Hardware</option>
+            <option value="Software">Software</option>
+            <option value="Consumible">Consumible</option>
+            <option value="Herramienta">Herramienta</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="field-estado">Estado *</label>
+          <select id="field-estado" required>
+            <option value="Activo">Activo</option>
+            <option value="En Reparación">En Reparación</option>
+            <option value="Próximo a Vencer">Próximo a Vencer</option>
+            <option value="Deshabilitado">Deshabilitado</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="field-responsable">Responsable</label>
+          <input type="text" id="field-responsable" placeholder="Nombre del responsable">
+        </div>
+
+        <div class="form-group">
+          <label for="field-ubicacion">Ubicación</label>
+          <input type="text" id="field-ubicacion" placeholder="Sala, estante, rack...">
+        </div>
+
+        <div class="form-group form-group--full">
+          <label for="field-descripcion">Descripción</label>
+          <textarea id="field-descripcion" rows="2" placeholder="Descripción breve del activo..."></textarea>
+        </div>
+
+        <!-- Solo visible si categoría = Software -->
+        <div class="form-group hidden" id="row-vencimiento">
+          <label for="field-vencimiento">Fecha de Vencimiento</label>
+          <input type="date" id="field-vencimiento">
+          <span class="field-hint">El sistema cambiará el estado a "Próximo a Vencer" cuando falte 1 mes.</span>
+        </div>
+
+        <!-- Solo visible si categoría = Software -->
+        <div class="form-group form-group--full hidden" id="row-hardware">
+          <label for="field-hardware">Hardware Asociado</label>
+          <select id="field-hardware">
+            <option value="">— Sin hardware asociado —</option>
+          </select>
+        </div>
+
+        <!-- Solo visible si categoría = Consumible -->
+        <div class="form-group hidden" id="row-stock">
+          <label for="field-stock">Stock (unidades)</label>
+          <input type="number" id="field-stock" min="0" placeholder="0">
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" id="modal-cancel" class="btn-secondary">Cancelar</button>
+        <button type="submit" id="btn-submit-asset" class="btn-primary">
+          <i class="bx bx-save"></i> Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 </html>
