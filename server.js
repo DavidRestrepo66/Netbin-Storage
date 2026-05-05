@@ -8,10 +8,12 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-const authRoutes  = require('./routes/authRoutes');
-const assetRoutes = require('./routes/assetRoutes');
-const roleRoutes  = require('./routes/roleRoutes');
-const userRoutes  = require('./routes/userRoutes');
+const authRoutes   = require('./routes/authRoutes');
+const roleRoutes   = require('./routes/roleRoutes');
+const userRoutes   = require('./routes/userRoutes');
+const reportRoutes    = require('./routes/reportRoutes');
+const importRoutes    = require('./routes/importRoutes');
+const inventoryRoutes = require('./routes/inventoryRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,9 +37,11 @@ if (fs.existsSync(externalAssetsPath)) {
 
 // ── Rutas API ─────────────────────────────────────────────────────────────────
 app.use('/api/auth',     authRoutes);
-app.use('/api/assets',   assetRoutes);
 app.use('/api/roles',    roleRoutes);
 app.use('/api/usuarios', userRoutes);
+app.use('/api/reports',   reportRoutes);
+app.use('/api/import',    importRoutes);
+app.use('/api/inventory', inventoryRoutes);
 
 // ── Ruta catch-all: redirige al login ────────────────────────────────────────
 app.get('*', (req, res) => {

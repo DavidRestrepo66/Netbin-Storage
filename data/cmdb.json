@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cmdb-3374d3ef",
+    "fechaImportacion": "2026-05-05T11:46:34.086Z",
+    "equipo": "Firewall",
+    "modelo": "Palo Alto PA-440",
+    "rol": "Firewall perimetral del laboratorio y gateway de las VLAN",
+    "serial": "21201149416"
+  },
+  {
+    "id": "cmdb-d179ed46",
+    "fechaImportacion": "2026-05-05T11:46:34.086Z",
+    "equipo": "Switch",
+    "modelo": "Avaya ERS3549GTS-PWR+",
+    "rol": "Switch de acceso L2 para conexión de usuarios y servidores",
+    "serial": "16JP4350L15X"
+  }
+]

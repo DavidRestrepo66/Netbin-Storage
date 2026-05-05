@@ -1,0 +1,19 @@
+[
+  {
+    "id": "tools-d8ec1390",
+    "fechaImportacion": "2026-05-05T11:46:22.628Z",
+    "id_tool": "T-001",
+    "nombre": "Cautín eléctrico",
+    "categoria": "Soldadura",
+    "marca": "Weller",
+    "modelo": "WES51",
+    "numero_serie": "SN989898",
+    "cantidad_total": "6",
+    "unidad_medida": "Unidad",
+    "estado": "Activo",
+    "ubicacion": "Lab - Gabinete A,1",
+    "fecha_adquisicion": "01/02/2026",
+    "proveedor": "XxXxX",
+    "observaciones": ""
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "software-aef7696c",
+    "fechaImportacion": "2026-05-05T11:46:13.771Z",
+    "id_sw": "SW-001",
+    "nombre_sw": "Virtual Box",
+    "categoria": "Virtualización",
+    "version": "v7,4",
+    "tipo_licencia": "Open Source",
+    "numero_licencias": "Ilimitadas",
+    "licencias_en_uso": "1",
+    "clave_producto": "N/A",
+    "fecha_compra": "N/A",
+    "fecha_vencimiento": "N/A",
+    "proveedor": "Oracle",
+    "instalado_en": "HW-001",
+    "estado": "Activa",
+    "observaciones": ""
+  }
+]

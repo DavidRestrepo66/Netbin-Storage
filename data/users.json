@@ -22,5 +22,17 @@
     "activo": true,
     "fechaRegistro": "2024-01-15T00:00:00.000Z",
     "fechaBaja": null
+  },
+  {
+    "id": "usr-1d3d2581",
+    "username": "David Restrepo",
+    "password": "1234",
+    "nombre": "david",
+    "email": "david.restrepoel@amigo.edu.co",
+    "rol": "Administrador",
+    "rol_id": "rol-001",
+    "activo": true,
+    "fechaRegistro": "2026-05-05T11:59:50.845Z",
+    "fechaBaja": null
   }
 ]

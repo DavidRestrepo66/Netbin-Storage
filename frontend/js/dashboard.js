@@ -41,22 +41,24 @@ document.getElementById('btn-logout')?.addEventListener('click', () => {
 });
 
 /* ── 4. Navegación entre secciones ───────────────────────── */
-const SECTIONS = ['inicio', 'activos', 'reportes', 'usuarios', 'roles'];
+const SECTIONS = ['inicio', 'activos', 'reportes', 'usuarios', 'roles', 'importacion'];
 
 const SECTION_ICONS = {
-  inicio:   '🏠',
-  activos:  '🖥️',
-  reportes: '📊',
-  usuarios: '👥',
-  roles:    '🛡️'
+  inicio:      '🏠',
+  activos:     '🖥️',
+  reportes:    '📊',
+  usuarios:    '👥',
+  roles:       '🛡️',
+  importacion: '⬆️'
 };
 
 const SECTION_NAMES = {
-  inicio:   'Inicio',
-  activos:  'Revisión de Activos',
-  reportes: 'Reportes',
-  usuarios: 'Gestión de Usuarios',
-  roles:    'Gestión de Roles'
+  inicio:      'Inicio',
+  activos:     'Revisión de Activos',
+  reportes:    'Reportes',
+  usuarios:    'Gestión de Usuarios',
+  roles:       'Gestión de Roles',
+  importacion: 'Importación de Datos'
 };
 
 /**

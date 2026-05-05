@@ -987,12 +987,60 @@ tbody td {
 }
 .cat-hardware    { background: #e8f4f8; color: #005f77; }
 .cat-software    { background: #eeebff; color: #4a3ab5; }
-.cat-consumible  { background: #fff5e0; color: #9a6000; }
-.cat-herramienta { background: #eaf5ea; color: #1e6b1e; }
+.cat-tools       { background: #eaf5ea; color: #1e6b1e; }
+.cat-consumable  { background: #fff5e0; color: #9a6000; }
+.cat-cmdb        { background: #f3e6f9; color: #6a2c91; }
 
 /* ── Extra status badges ──────────────────────────────────── */
 .status-reparacion { background: #fde8e8; color: #9a1f1f; }
 .status-proximo    { background: #fff5e0; color: #b26a00; }
+
+/* ── Detail panel ─────────────────────────────────────────── */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1.5px solid #e8e8e8;
+}
+.detail-badge-tipo {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .25rem .65rem;
+  border-radius: var(--radius-sm);
+}
+.detail-id {
+  font-size: .82rem;
+  color: var(--color-gray);
+}
+.detail-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem 1.5rem;
+}
+.detail-field { display: flex; flex-direction: column; gap: .18rem; }
+.detail-field--full { grid-column: 1 / -1; }
+.detail-field label {
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--color-gray);
+}
+.detail-field span {
+  font-size: .9rem;
+  color: var(--color-gray-dk);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+.detail-field span.empty { color: #b0b0b0; font-style: italic; }
+@media (max-width: 540px) {
+  .detail-fields { grid-template-columns: 1fr; }
+  .detail-field--full { grid-column: 1; }
+}
 
 /* ── Action buttons ───────────────────────────────────────── */
 .action-btns { display: flex; gap: .4rem; }
@@ -1011,6 +1059,8 @@ tbody td {
 }
 .btn-edit  { background: var(--color-primary-lt); color: var(--color-primary); }
 .btn-edit:hover  { background: var(--color-primary); color: var(--color-white); }
+.btn-detail { background: #f0f7f0; color: #2e7d32; }
+.btn-detail:hover { background: #2e7d32; color: var(--color-white); }
 .btn-baja  { background: #fde8e8; color: var(--color-danger); }
 .btn-baja:hover  { background: var(--color-danger); color: var(--color-white); }
 .btn-edit:disabled, .btn-baja:disabled {

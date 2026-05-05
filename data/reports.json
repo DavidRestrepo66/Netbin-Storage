@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rep-resumen-general",
+    "nombre": "Resumen General de Activos",
+    "descripcion": "Totales por categoría y por estado del inventario completo del laboratorio.",
+    "tipo": "resumen-general",
+    "icono": "bx-pie-chart-alt-2",
+    "filtros": {}
+  },
+  {
+    "id": "rep-por-categoria",
+    "nombre": "Activos por Categoría",
+    "descripcion": "Listado detallado de activos agrupados por su categoría (Hardware, Software, etc.).",
+    "tipo": "por-categoria",
+    "icono": "bx-category",
+    "filtros": {}
+  },
+  {
+    "id": "rep-por-estado",
+    "nombre": "Activos por Estado",
+    "descripcion": "Listado detallado de activos agrupados por su estado operacional.",
+    "tipo": "por-estado",
+    "icono": "bx-pulse",
+    "filtros": {}
+  },
+  {
+    "id": "rep-proximos-vencer",
+    "nombre": "Software Próximo a Vencer",
+    "descripcion": "Activos de tipo Software cuya fecha de vencimiento es inminente o ya caducó.",
+    "tipo": "proximos-vencer",
+    "icono": "bx-calendar-x",
+    "filtros": {}
+  },
+  {
+    "id": "rep-bajas",
+    "nombre": "Activos dados de Baja",
+    "descripcion": "Histórico de activos deshabilitados con su fecha de baja correspondiente.",
+    "tipo": "bajas",
+    "icono": "bx-x-circle",
+    "filtros": {}
+  },
+  {
+    "id": "rep-por-responsable",
+    "nombre": "Activos por Responsable",
+    "descripcion": "Cantidad de activos asignados a cada responsable del laboratorio.",
+    "tipo": "por-responsable",
+    "icono": "bx-user-pin",
+    "filtros": {}
+  }
+]

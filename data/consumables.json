@@ -1,0 +1,19 @@
+[
+  {
+    "id": "consumable-6161a2eb",
+    "fechaImportacion": "2026-05-05T12:09:48.706Z",
+    "origen": "manual",
+    "id_consumable": "CN-001",
+    "nombre": "tornillo 2 pulgadas",
+    "categoria": "tornillo",
+    "marca": "",
+    "cantidad_total": "5",
+    "unidad_medida": "unidad",
+    "stock_minimo": "1",
+    "estado": "Disponible",
+    "ubicacion": "",
+    "fecha_adquisicion": "",
+    "proveedor": "",
+    "observaciones": ""
+  }
+]
